@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+string chuanHoa(string s) {
+    string hoten = "";
+    int n = s.length();
+    bool tu = true;
+
+    for (int i = 0; i < n; i++) {
+        if (s[i] != ' ') {
+            if (tu==true) {
+                hoten += toupper(s[i]);
+                tu = false;
+            } else {
+                hoten += tolower(s[i]);
+            }
+        } else if (!hoten.empty()==1 && hoten.back() != ' ') {
+            hoten += ' ';
+            tu = true;
+        }
+    }
+
+    if (!hoten.empty() && hoten.back() == ' ') {
+        hoten.pop_back();
+    }
+    return hoten;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    cin.ignore();
+
+    while (n--) {
+        string s;
+        getline(cin, s);
+        cout << chuanHoa(s) << endl;
+    }
+
+    return 0;
+}
