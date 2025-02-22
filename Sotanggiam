@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+bool khonggiam(string s) {
+    for (int i = 1; i < s.size(); i++) {
+        if (s[i] < s[i - 1]) return false;
+    }
+    return true;
+}
+
+bool khongtang(string s) {
+    for (int i = 1; i < s.size(); i++) {
+        if (s[i] > s[i - 1]) return false;
+    }
+    return true;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        if (khonggiam(s) || khongtang(s)) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
+    return 0;
+}
