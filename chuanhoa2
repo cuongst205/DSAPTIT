@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+string tachho(string s) {
+    string ho = "";
+    int i = 0;
+    while (i < s.size() && s[i] == ' ') i++;
+    while (i < s.size() && s[i] != ' ') {
+        ho += toupper(s[i]);
+        i++;
+    }
+    return ho;
+}
+
+string chuanHoa(string s) {
+    string hoten = "";
+    int i = 0;
+    while (i < s.size() && s[i] == ' ') i++;
+    while (i < s.size() && s[i] != ' ') i++;
+    while (i < s.size() && s[i] == ' ') i++;
+
+    bool tu = true;
+    for (; i < s.size(); i++) {
+        if (s[i] != ' ') {
+            if (tu) {
+                hoten += toupper(s[i]);
+                tu = false;
+            } else {
+                hoten += tolower(s[i]);
+            }
+        } else if (!hoten.empty() && hoten.back() != ' ') {
+            hoten += ' ';
+            tu = true;
+        }
+    }
+
+    if (!hoten.empty() && hoten.back() == ' ') {
+        hoten.pop_back();
+    }
+
+    return hoten;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    cin.ignore();
+    while (n--) {
+        string s;
+        getline(cin, s);
+        cout << chuanHoa(s) << ", " << tachho(s) << endl;
+    }
+    return 0;
+}
